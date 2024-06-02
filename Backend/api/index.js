@@ -22,44 +22,44 @@ const app = express();
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 // not working for some reason
-// app.use(cors());
+app.use(cors());
 
-// hardcoded
-app.use(
-  cors({
-    origin: ["https://autocion-frontend-five.vercel.app/"], // add or replace with frontend url for prod
-    methods: ["POST", "GET", "PUT", "PATCH", "DELETE", "OPTIONS"],
-    credentials: true,
-  })
-);
+// // hardcoded
+// app.use(
+//   cors({
+//     origin: ["https://autocion-frontend-five.vercel.app/"], // add or replace with frontend url for prod
+//     methods: ["POST", "GET", "PUT", "PATCH", "DELETE", "OPTIONS"],
+//     credentials: true,
+//   })
+// );
 
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://autocion-frontend-five.vercel.app/"); //add or replace with frontend url for prod
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-  );
-  if (req.method == "OPTIONS") {
-    res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE, GET");
-    return res.status(200).json({});
-  }
+// app.use((req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", "https://autocion-frontend-five.vercel.app/"); //add or replace with frontend url for prod
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+//   );
+//   if (req.method == "OPTIONS") {
+//     res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE, GET");
+//     return res.status(200).json({});
+//   }
 
-app.options("/api/v1/*", (req, res) => {
-  res.setHeader("Access-Control-Allow-Origin", "https://autocion-frontend-five.vercel.app/"); //add or replace with frontend url for prod
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  res.sendStatus(200);
-});
+// app.options("/api/v1/*", (req, res) => {
+//   res.setHeader("Access-Control-Allow-Origin", "https://autocion-frontend-five.vercel.app/"); //add or replace with frontend url for prod
+//   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+//   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+//   res.sendStatus(200);
+// });
 
 
-  // Default route
-  app.use("/", (req, res) => {
-    console.log("successful!!");
-    res.json({ message: "Hello the backend is working as intented!" });
-  });
+//   // Default route
+//   app.use("/", (req, res) => {
+//     console.log("successful!!");
+//     res.json({ message: "Hello the backend is working as intented!" });
+//   });
 
-  next();
-});
+//   next();
+// });
 
 app.use("/api/v1", userRoutes);
 app.use("/api/v1", brandRoutes);
