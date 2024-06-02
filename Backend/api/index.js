@@ -27,14 +27,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // hardcoded
 app.use(
   cors({
-    origin: ["http://localhost:3000"], // add or replace with frontend url for prod
+    origin: ["https://autocion1-frontend.vercel.app"], // add or replace with frontend url for prod
     methods: ["POST", "GET", "PUT", "PATCH", "DELETE", "OPTIONS"],
     credentials: true,
   })
 );
 
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "http://localhost:3000"); //add or replace with frontend url for prod
+  res.header("Access-Control-Allow-Origin", "https://autocion1-frontend.vercel.app"); //add or replace with frontend url for prod
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept, Authorization"
