@@ -44,9 +44,13 @@ app.use((req, res, next) => {
     return res.status(200).json({});
   }
 
-  app.options("/api/v1/*", (req, res) => {
-    res.sendStatus(200);
-  });
+app.options("/api/v1/*", (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "https://autocion1-frontend.vercel.app");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.sendStatus(200);
+});
+
 
   // Default route
   app.use("/", (req, res) => {
