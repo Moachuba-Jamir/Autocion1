@@ -27,14 +27,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // hardcoded
 app.use(
   cors({
-    origin: ["https://autocion1-frontend.vercel.app"], // add or replace with frontend url for prod
+    origin: ["https://autocion-frontend-five.vercel.app/"], // add or replace with frontend url for prod
     methods: ["POST", "GET", "PUT", "PATCH", "DELETE", "OPTIONS"],
     credentials: true,
   })
 );
 
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://autocion1-frontend.vercel.app"); //add or replace with frontend url for prod
+  res.header("Access-Control-Allow-Origin", "https://autocion-frontend-five.vercel.app/"); //add or replace with frontend url for prod
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept, Authorization"
@@ -45,7 +45,7 @@ app.use((req, res, next) => {
   }
 
 app.options("/api/v1/*", (req, res) => {
-  res.setHeader("Access-Control-Allow-Origin", "https://autocion1-frontend.vercel.app");
+  res.setHeader("Access-Control-Allow-Origin", "https://autocion-frontend-five.vercel.app/"); //add or replace with frontend url for prod
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
   res.sendStatus(200);
